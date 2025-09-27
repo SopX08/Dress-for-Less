@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2 class="text">Log Your Outfits</h2>
+  <!-- outfit button -->
+<div id="scene-container"></div>
+<div id="clothing-options">
+  <label><input type="checkbox" value="1">black dress</label>
+  <label><input type="checkbox" value="3">jorts</label>
+  <label><input type="checkbox" value="7">short skirt</label>
+  <label><input type="checkbox" value="4">cargos</label>
+  <label><input type="checkbox" value="10">yellow shirt</label>
+  <label><input type="checkbox" value="5">pants</label>
+  <label><input type="checkbox" value="6">beige sweater</label>
+  <label><input type="checkbox" value="8">long skirt</label>
+  <label><input type="checkbox" value="0">white dress</label>
+  <label><input type="checkbox" value="2">red sweater</label>
+  <label><input type="checkbox" value="9">green tshirt</label>
+</div>
+  <button class="confirm-button" id="confirm-button">
+    <img
+      src="{{url_for('static', filename='images/confirm.webp')}}"
+      class="confirm"
+    />
+  </button>
+
+  <div class="token-modal" id="token-modal">
+    <div class="token-modal-content">
+      <img class="token-modal-img" src="{{url_for('static', filename='images/5leaves.webp')}}" alt="5 leaves">
+    </div>
+  </div>
+
+  <!-- import three into html -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.166.1/examples/jsm/"
+      }
+    }
+  </script>
+
+  <script
+    type="module"
+    src="{{ url_for('static', filename='/js/app.js') }}"
+  ></script>
+  <script src="{{url_for('static', filename='js/leaves.js')}}"></script>
+{% endblock %}

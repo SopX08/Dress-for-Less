@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2 class="text">Donation Map</h2>
+  <p class="text">
+    Here is the map for local clothing donation sites. You can donate your
+    unused or unwanted clothing in these locations.
+  </p>
+
+  <div class="container">
+    <iframe
+      width="100%"
+      height="500"
+      loading="lazy"
+      allowfullscreen
+      src="https://www.google.com/maps/embed/v1/search?key=AIzaSyA95gnzrLCx1-kErO3r9ELxYnohGNHnnAo&q=clothing+donation"
+    ></iframe>
+    <p>Powered by Google.</p>
+  </div>
+  </p>    
+{% endblock %} 
+

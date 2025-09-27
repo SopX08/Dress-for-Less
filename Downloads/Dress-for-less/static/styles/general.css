@@ -1,0 +1,110 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif; /* Use a clean sans-serif font */
+  line-height: 1.6; /* Improve readability */
+  background-color: #f5ecdf; /* Light background color */
+  color: #333; /* Dark text for contrast */
+  padding: 0;
+  margin-top: clamp(0px, 34vw, 320px); /* push everything down cause of header*/
+}
+
+footer {
+  align-items: center;
+  transform: translate(-2%, 0);
+}
+
+/* Make sure the page takes up full height */
+html,
+body {
+  height: 100%;
+  text-align: center;
+  font-family: "Sour Gummy", sans-serif;
+}
+
+/* Links */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+a:hover {
+  color: #2600ff;
+}
+
+.no-bullets {
+  list-style-type: none;
+  bottom: 0;
+}
+
+.add_clothes-button,
+.donation_map-button,
+.friends-button,
+.index-button,
+.log_outfit-button,
+.trade-button,
+.wardrobe-button {
+  border-radius: 1%;
+  background-color: black;
+  color: white;
+}
+
+.text {
+  font-size: clamp(16px, 2.5vw, 25px);
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+
+.text2 {
+  font-size: clamp(24px, 3vw, 60px);
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+
+.header {
+  background-color: #f0e1cb;
+  display: block;
+  width: 100vw;
+  max-height: 300px;
+  height: auto;
+  position: absolute;
+  top: 0;
+}
+.logo {
+  position: relative;
+  display: block;
+  max-width: 500px;
+  width: 50%;
+  height: auto;
+  left: 50vw;
+  transform: translate(-50%, 0);
+}
+
+.leaderboard {
+  width: 50%;
+  height: auto;
+  text-align: center;
+}
+
+.leaves-image {
+  top: 20%;
+  left: 1%;
+  height: auto;
+  width: 10%;
+  display: block;
+  position: absolute;
+}
+.leaves {
+  left: 11%;
+  top: 20%;
+  display: block;
+  font-size: clamp(16px, 7vw, 150px);
+  position: absolute;
+  transform: translate(0, -70%);
+}
+.mail-image {
+  top: 30%;
+  right: 10%;
+  height: auto;
+  width: 10vw;
+  display: block;
+  position: absolute;
+  z-index: 2;
+}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2 class="text">Friends</h2>
+  <p class="text">Here are your friends with the most leaves!</p>
+
+  <img
+    src="../static/images/Leaderboard.png"
+    alt="Leaderboard"
+    class="leaderboard"
+  />
+
+  <!-- import three into html -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.166.1/examples/jsm/"
+      }
+    }
+  </script>
+
+  <script
+    type="module"
+    src="{{ url_for('static', filename='/js/app.js') }}"
+  ></script>
+{% endblock %} 

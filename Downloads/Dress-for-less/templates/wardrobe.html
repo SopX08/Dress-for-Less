@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% block content %}
+<h2 class="text">See Your Wardrobe</h2>
+
+<div class="overlay" id="unused_clothing_overlay"></div>
+
+<img
+  id="unused_clothing_popup"
+  class="popup"
+  src="../static/images/unused clothing.png"
+  alt="You haven't worn this in a while..."
+/>
+<a href="{{ url_for('generate_outfit') }}">
+  <img
+    id="design_button_popup"
+    class="design_popup_button"
+    src="../static/images/Design.png"
+    alt="design?"
+  />
+</a>
+<a href="{{ url_for('donate') }}">
+  <img
+    id="donate_button_popup"
+    class="donate_popup_button"
+    src="../static/images/Donate.png"
+    alt="donate?"
+  />
+</a>
+<div class="wardrobe-container">
+  <img
+    class="wardrobe-background"
+    src="{{ url_for('static', filename='images/wardrobe-background.webp') }}"
+    alt=""
+  />
+  <div id="wardrobe-slot-top"></div>
+  <div id="wardrobe-slot-bottom"></div>
+  <div id="wardrobe-slot-outerwear"></div>
+  <div id="wardrobe-slot-onepiece"></div>
+</div>
+
+<script src="{{ url_for('static', filename='js/pop up.js') }}"></script>
+{% endblock %}

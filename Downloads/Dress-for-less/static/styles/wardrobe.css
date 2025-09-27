@@ -1,0 +1,48 @@
+.wardrobe-container {
+  width: 80%;
+  height: auto;
+  transform: translate(13%, 0);
+}
+.wardrobe-background {
+  width: 100%;
+  height: 100%;
+}
+
+.clothes-grid {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.grid-item {
+  display: inline-block;
+  background-color: rgb(117, 60, 60);
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+
+.wardrobe-slot {
+  position: absolute;
+  width: 39%;
+  height: 35%;
+  border: 1px solid black;
+}
+
+.top {
+  top: 14%;
+  left: 9%;
+}
+.bottom {
+  top: 14%;
+  right: 9%;
+}
+.outerwear {
+  bottom: 11%;
+  left: 9%;
+  height: 32%;
+}
+.onepiece {
+  bottom: 11%;
+  right: 9%;
+  height: 32%;
+}

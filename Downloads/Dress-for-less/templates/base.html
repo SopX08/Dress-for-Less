@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Serve to Conserve</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/general.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/buttons.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='styles/leaves.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='styles/pop up.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='styles/wardrobe.css')}}"
+    />
+  </head>
+
+  <body>
+    <div class="header">
+      <img
+        src="{{url_for('static', filename='images/logo.webp')}}"
+        class="logo"
+      />
+      <p id="leaves" class="leaves">0</p>
+      <img
+        src="{{url_for('static', filename='images/leaf.webp')}}"
+        class="leaves-image"
+        alt="leaf"
+      />
+
+      <img
+        src="{{ url_for('static', filename='images/mailbutton.png') }}"
+        class="mail-image"
+        alt="mail"
+        id="mail_button"
+      />
+      <img
+        src="{{ url_for('static', filename='images/mail.PNG')}}"
+        alt="you've got mail!"
+        class="mail_popup"
+        id="mail"
+      />
+    </div>
+    <div class="overlay" id="mail_overlay"></div>
+
+    {% block content %}{% endblock %}
+    <script src="{{url_for('static', filename='/js/pop up.js')}}"></script>
+    <script src="{{url_for('static', filename='js/leaves.js')}}"></script>
+    <script src="{{url_for('static', filename='js/add clothes form.js')}}"></script>
+    <script src="{{url_for('static', filename='js/wardrobe.js')}}"></script>
+  </body>
+
+  <footer>
+    <nav>
+      <ul class="no-bullets">
+        <li>
+          <a href="{{ url_for('generate_outfit') }}">
+            <img
+              src="{{url_for('static', filename='images/Log Outfit.png')}}"
+              class="cool-button"
+            />
+          </a>
+          <a href="{{ url_for('add_clothes') }}">
+            <img
+              src="{{url_for('static', filename='images/Add Clothes.png')}}"
+              class="cool-button"
+            />
+          </a>
+        </li>
+        <li>
+          <a href="{{ url_for('index') }}">
+            <img
+              src="{{url_for('static', filename='images/home.webp')}}"
+              class="icon-button"
+            />
+          </a>
+          <a href="{{ url_for('wardrobe') }}">
+            <img
+              src="{{url_for('static', filename='images/wardrobe.webp')}}"
+              class="icon-button"
+            />
+          </a>
+          <a href="{{ url_for('friends') }}">
+            <img
+              src="{{url_for('static', filename='images/friends.webp')}}"
+              class="icon-button"
+            />
+          </a>
+          <a href="{{ url_for('trade') }}">
+            <img
+              src="{{url_for('static', filename='images/trade.webp')}}"
+              class="icon-button"
+            />
+          </a>
+          <a href="{{ url_for('donate') }}">
+            <img
+              src="{{url_for('static', filename='images/donate.webp')}}"
+              class="icon-button"
+            />
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </footer>
+</html>

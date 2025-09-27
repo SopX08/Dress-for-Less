@@ -1,0 +1,65 @@
+.popup {
+  top: 50vh;
+  right: 51vw;
+  transform: translate(50%, -45%);
+  position: absolute;
+  z-index: 10;
+  display: none;
+  width: 90vw;
+  height: auto;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.5;
+  display: none;
+}
+
+.design_popup_button {
+  transform: translate(5%, 130%);
+  top: 50vh;
+  left: 13vw;
+  position: absolute;
+  z-index: 11;
+  width: 25vw;
+  height: auto;
+  display: none;
+}
+
+.donate_popup_button {
+  transform: translate(5%, 45%);
+  top: 50vh;
+  left: 13vw;
+  position: absolute;
+  z-index: 11;
+  width: 25vw;
+  height: auto;
+  display: none;
+}
+
+.mail_popup {
+  position: fixed;
+  display: none;
+  top: 50vh;
+  left: 50vw;
+  width: 50vw;
+  height: auto;
+  transform: translate(-50%, -45%);
+  z-index: 12;
+}
+
+.co2_text_popup {
+  font-size: 5vw;
+  position: absolute;
+  display: none;
+  top: 50vh;
+  left: 33.5vw;
+  transform: translate(-50%, -150%);
+  z-index: 12;
+}

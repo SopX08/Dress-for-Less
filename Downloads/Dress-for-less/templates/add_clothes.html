@@ -1,0 +1,169 @@
+{% extends "base.html" %} {% block content %}
+<h2 class="text">Add Clothes</h2>
+
+<!-- Form with file upload and text inputs -->
+<form
+  action="/submit"
+  method="POST"
+  enctype="multipart/form-data"
+  id="clothing_form"
+>
+  <label for="name" class="text">Name of Clothing:</label> <br />
+  <input type="text" id="name" name="name" required /><br /><br />
+
+  <label for="file" class="text">Choose a Photo:</label> <br />
+  <input
+    type="file"
+    name="file"
+    id="file"
+    accept="image/*"
+    required
+  /><br /><br />
+
+  <!-- Image preview area -->
+  <div id="preview-container">
+    <img
+      id="imagePreview"
+      src=""
+      alt="Image Preview"
+      style="
+        display: none;
+        max-width: 100%;
+        max-height: 300px;
+        left: 50vw;
+        position: relative;
+        transform: translate(-53%, 0);
+      "
+    />
+  </div>
+  <br />
+
+  <!-- Normal text input fields -->
+  <label for="type of clothing" class="text">Type of Clothing:</label> <br />
+  <br />
+
+  <label for="tshirt"
+    >T-Shirt
+    <input
+      type="radio"
+      id="tshirt"
+      name="type of clothing"
+      value="tshirt"
+      required
+  /></label>
+
+  <label for="shirt"
+    >Shirt
+    <input
+      type="radio"
+      id="shirt"
+      name="type of clothing"
+      value="shirt"
+      required /></label
+  ><br />
+
+  <label for="longskirt"
+    >Long Skirt
+    <input
+      type="radio"
+      id="longskirt"
+      name="type of clothing"
+      value="longskirt"
+      required
+  /></label>
+
+  <label for="shortskirt"
+    >Short Skirts
+    <input
+      type="radio"
+      id="shortskirt"
+      name="type of clothing"
+      value="shortskirt"
+      required /></label
+  ><br />
+
+  <label for="sweater"
+    >Sweater
+    <input
+      type="radio"
+      id="sweater"
+      name="type of clothing"
+      value="sweater"
+      required
+  /></label>
+
+  <label for="longsweater"
+    >Long Sweater
+    <input
+      type="radio"
+      id="longsweater"
+      name="type of clothing"
+      value="longsweater"
+      required /></label
+  ><br />
+
+  <label for="pants"
+    >Pants
+    <input
+      type="radio"
+      id="pants"
+      name="type of clothing"
+      value="pants"
+      required
+  /></label>
+
+  <label for="widepants"
+    >Wide Pants
+    <input
+      type="radio"
+      id="widepants"
+      name="type of clothing"
+      value="widepants"
+      required /></label
+  ><br />
+
+  <label for="shorts"
+    >Shorts
+    <input
+      type="radio"
+      id="shorts"
+      name="type of clothing"
+      value="shorts"
+      required
+  /></label>
+
+  <label for="dress"
+    >Dress
+    <input
+      type="radio"
+      id="dress"
+      name="type of clothing"
+      value="dress"
+      required /></label
+  ><br />
+
+  <label for="dresssleeves"
+    >Dress Sleeves
+    <input
+      type="radio"
+      id="dresssleeves"
+      name="type of clothing"
+      value="dresssleeves"
+      required /></label
+  ><br /><br />
+  <button type="submit" id="submit_button">Add to Wardrobe!</button>
+</form>
+
+<div class="overlay" id="co2_overlay"></div>
+
+<img
+  id="co2_popup"
+  class="popup"
+  src="../static/images/co2 emissions.png"
+  alt="co2_popup"
+/>
+
+<p id="co2_e_text" class="co2_text_popup">TEST</p>
+
+
+{% endblock %}

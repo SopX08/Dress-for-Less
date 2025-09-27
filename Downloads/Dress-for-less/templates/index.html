@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2 class="text2">Home</h2>
+  <p class="text">
+    Welcome to Serve to Conserve, your go-to app for being sustainable in style!
+  </p>
+  <div id="scene-container"></div>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.166.1/examples/jsm/"
+      }
+    }
+  </script>
+
+  <script
+    type="module"
+    src="{{ url_for('static', filename='/js/app.js') }}"
+  ></script>
+{% endblock %}

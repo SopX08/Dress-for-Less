@@ -1,0 +1,22 @@
+.token-modal {
+  display: none;
+  position: fixed;
+  z-index: 1; /* sit on top */
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.4); /* black w/ opacity */
+}
+
+/* need to do media override*/
+.token-modal-content {
+  width: max-content;
+  height: max-content;
+}
+
+.token-modal-img {
+  display: block;
+  width: auto;
+  height: auto;
+}
