@@ -1,10 +1,11 @@
 {% extends "base.html" %}
-
 {% block content %}
-  <h2 class="text2">Home</h2>
-  <p class="text">
-    Welcome to Serve to Conserve, your go-to app for being sustainable in style!
+  <h2 id="home-title" class="text2">Home</h2>
+
+  <p id="home-welcome" class="text">
+    Welcome to Dress for Less, your go-to app for being sustainable in style!
   </p>
+
   <div id="scene-container"></div>
 
   <script type="importmap">
@@ -15,9 +16,5 @@
       }
     }
   </script>
-
-  <script
-    type="module"
-    src="{{ url_for('static', filename='/js/app.js') }}"
-  ></script>
+  <script type="module" src="{{ url_for('static', filename='/js/app.js') }}"></script>
 {% endblock %}

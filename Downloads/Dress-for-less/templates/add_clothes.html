@@ -1,6 +1,12 @@
 {% extends "base.html" %} {% block content %}
-<h2 class="text">Add Clothes</h2>
+<!-- html -->
+<h2 id="add-clothes-title">Add Clothes</h2>
 
+<div class="name-field">
+  <label for="clothing-name" class="text">Name of Clothing:</label>
+
+  <input type="text" id="clothing-name" name="name" class="text-input" required />
+</div>
 <!-- Form with file upload and text inputs -->
 <form
   action="/submit"
@@ -8,8 +14,7 @@
   enctype="multipart/form-data"
   id="clothing_form"
 >
-  <label for="name" class="text">Name of Clothing:</label> <br />
-  <input type="text" id="name" name="name" required /><br /><br />
+
 
   <label for="file" class="text">Choose a Photo:</label> <br />
   <input
@@ -38,121 +43,70 @@
   </div>
   <br />
 
-  <!-- Normal text input fields -->
-  <label for="type of clothing" class="text">Type of Clothing:</label> <br />
-  <br />
+ <!-- html -->
+<div class="clothing-types">
+  <label for="type of clothing" class="text">Type of Clothing:</label>
+  <br /><br />
 
-  <label for="tshirt"
-    >T-Shirt
-    <input
-      type="radio"
-      id="tshirt"
-      name="type of clothing"
-      value="tshirt"
-      required
-  /></label>
+  <div class="clothing-options">
+    <label for="tshirt">
+      T-Shirt
+      <input type="radio" id="tshirt" name="type of clothing" value="tshirt" required />
+    </label>
 
-  <label for="shirt"
-    >Shirt
-    <input
-      type="radio"
-      id="shirt"
-      name="type of clothing"
-      value="shirt"
-      required /></label
-  ><br />
+    <label for="shirt">
+      Shirt
+      <input type="radio" id="shirt" name="type of clothing" value="shirt" required />
+    </label>
 
-  <label for="longskirt"
-    >Long Skirt
-    <input
-      type="radio"
-      id="longskirt"
-      name="type of clothing"
-      value="longskirt"
-      required
-  /></label>
+    <label for="longskirt">
+      Long Skirt
+      <!-- change name="clothing_type" → name="type of clothing" -->
+      <input type="radio" id="longskirt" name="type of clothing" value="longskirt" />
+    </label>
 
-  <label for="shortskirt"
-    >Short Skirts
-    <input
-      type="radio"
-      id="shortskirt"
-      name="type of clothing"
-      value="shortskirt"
-      required /></label
-  ><br />
+    <label for="shortskirt">
+      Short Skirt
+      <input type="radio" id="shortskirt" name="type of clothing" value="shortskirt" />
+    </label>
 
-  <label for="sweater"
-    >Sweater
-    <input
-      type="radio"
-      id="sweater"
-      name="type of clothing"
-      value="sweater"
-      required
-  /></label>
+    <label for="sweater">
+      Sweater
+      <input type="radio" id="sweater" name="type of clothing" value="sweater" />
+    </label>
 
-  <label for="longsweater"
-    >Long Sweater
-    <input
-      type="radio"
-      id="longsweater"
-      name="type of clothing"
-      value="longsweater"
-      required /></label
-  ><br />
+    <label for="pants">
+      Pants
+      <input type="radio" id="pants" name="type of clothing" value="pants" />
+    </label>
 
-  <label for="pants"
-    >Pants
-    <input
-      type="radio"
-      id="pants"
-      name="type of clothing"
-      value="pants"
-      required
-  /></label>
+    <label for="jeans">
+      Jeans
+      <input type="radio" id="jeans" name="type of clothing" value="jeans" />
+    </label>
 
-  <label for="widepants"
-    >Wide Pants
-    <input
-      type="radio"
-      id="widepants"
-      name="type of clothing"
-      value="widepants"
-      required /></label
-  ><br />
+    <label for="shorts">
+      Shorts
+      <input type="radio" id="shorts" name="type of clothing" value="shorts" />
+    </label>
 
-  <label for="shorts"
-    >Shorts
-    <input
-      type="radio"
-      id="shorts"
-      name="type of clothing"
-      value="shorts"
-      required
-  /></label>
+    <label for="dress">
+      Dress
+      <input type="radio" id="dress" name="type of clothing" value="dress" />
+    </label>
+    <label for="jacket">
+      Jacket
+      <input type="radio" id="jacket" name="type of clothing" value="jacket" />
+    </label>
 
-  <label for="dress"
-    >Dress
-    <input
-      type="radio"
-      id="dress"
-      name="type of clothing"
-      value="dress"
-      required /></label
-  ><br />
+    <!-- add other labels here -->
+  </div> <!-- .clothing-options -->
+</div> <!-- .clothing-types -->
 
-  <label for="dresssleeves"
-    >Dress Sleeves
-    <input
-      type="radio"
-      id="dresssleeves"
-      name="type of clothing"
-      value="dresssleeves"
-      required /></label
-  ><br /><br />
   <button type="submit" id="submit_button">Add to Wardrobe!</button>
 </form>
+
+  
 
 <div class="overlay" id="co2_overlay"></div>
 
@@ -164,6 +118,10 @@
 />
 
 <p id="co2_e_text" class="co2_text_popup">TEST</p>
+
+<script>
+  window.APP_ROUTES = { generateOutfit: "{{ url_for('generate_outfit') }}" };
+</script>
 
 
 {% endblock %}

@@ -4,19 +4,110 @@
   <h2 class="text">Log Your Outfits</h2>
   <!-- outfit button -->
 <div id="scene-container"></div>
-<div id="clothing-options">
-  <label><input type="checkbox" value="1">black dress</label>
-  <label><input type="checkbox" value="3">jorts</label>
-  <label><input type="checkbox" value="7">short skirt</label>
-  <label><input type="checkbox" value="4">cargos</label>
-  <label><input type="checkbox" value="10">yellow shirt</label>
-  <label><input type="checkbox" value="5">pants</label>
-  <label><input type="checkbox" value="6">beige sweater</label>
-  <label><input type="checkbox" value="8">long skirt</label>
-  <label><input type="checkbox" value="0">white dress</label>
-  <label><input type="checkbox" value="2">red sweater</label>
-  <label><input type="checkbox" value="9">green tshirt</label>
-</div>
+<div id="clothing-options"></div>
+<script>
+  // 1) Merge unlocks from URL ?unlock=flag1,flag2
+  (function mergeUnlocksFromURL(){
+    const params = new URLSearchParams(window.location.search);
+    const fromURL = params.get("unlock");
+    if (!fromURL) return;
+
+    const flags = fromURL.split(",").map(s => s.trim()).filter(Boolean);
+    const KEY = "unlocked_options";
+    const curr = JSON.parse(localStorage.getItem(KEY) || "[]");
+    flags.forEach(f => { if (!curr.includes(f)) curr.push(f); });
+    localStorage.setItem(KEY, JSON.stringify(curr));
+
+    // optional: clean the URL (no refresh)
+    params.delete("unlock");
+    const clean = window.location.pathname + (params.toString() ? ("?"+params.toString()) : "");
+    window.history.replaceState({}, "", clean);
+  })();
+
+  // 2) Your existing code to render options
+  const baseOptions = [
+    { v: 7,  label: "short skirt" },
+    { v: 4,  label: "cargos" },
+    { v: 9,  label: "green tshirt" },
+    { v: 5,  label: "pants" },
+    { v: 6,  label: "beige sweater" },
+    { v: 1,  label: "black dress" },
+    { v: 0,  label: "white dress" },
+    { v: 2,  label: "red sweater" },
+  ];
+
+  // Values must match your existing IDs:
+  // long skirt → 8, yellow shirt → 10, jorts → 3
+  const unlockConfig = {
+    long_skirt:   { v: 8,  label: "long skirt" },
+    yellow_shirt: { v: 10, label: "yellow shirt" },
+    jorts:        { v: 3,  label: "jorts" },
+  };
+
+  const container = document.getElementById("clothing-options");
+
+  // ✅ FIXED: use backticks for the HTML string, plus predictable id/class
+  function addLabel({ v, label }) {
+    const id = `opt-${v}`;
+    const el = document.createElement("label");
+    el.setAttribute("for", id);
+    el.innerHTML = `
+      <input
+        type="checkbox"
+        id="${id}"
+        class="clothing-opt"
+        name="clothing"
+        value="${v}"
+      />
+      ${label}
+    `;
+    container.appendChild(el);
+  }
+
+  // Render base
+  baseOptions.forEach(addLabel);
+
+  // Append unlocked options (set by Add Clothes page)
+  const unlocked = JSON.parse(localStorage.getItem("unlocked_options") || "[]");
+  console.log("Unlocked options found:", unlocked);
+  unlocked.forEach(key => unlockConfig[key] && addLabel(unlockConfig[key]));
+
+  // ✅ Wire up dynamic checkboxes via delegation so clicks always work
+  function notifySelectionChanged(targetInput) {
+    // Common patterns your app.js might use:
+    const id = Number(targetInput.value);
+    const checked = targetInput.checked;
+
+    // 1) If app.js exposes a per-item toggle:
+    if (typeof window.onClothingToggle === "function") {
+      window.onClothingToggle(id, checked);
+      return;
+    }
+
+    // 2) If app.js expects the full selected list:
+    if (typeof window.updateOutfit === "function") {
+      const selected = Array.from(
+        container.querySelectorAll('input.clothing-opt:checked')
+      ).map(i => Number(i.value));
+      window.updateOutfit(selected);
+      return;
+    }
+
+    // 3) Otherwise, broadcast an event (you can listen for this in app.js)
+    const selected = Array.from(
+      container.querySelectorAll('input.clothing-opt:checked')
+    ).map(i => Number(i.value));
+    document.dispatchEvent(new CustomEvent("outfit:change", { detail: { id, checked, selected } }));
+  }
+
+  container.addEventListener("change", (e) => {
+    if (e.target && e.target.matches('input.clothing-opt')) {
+      notifySelectionChanged(e.target);
+    }
+  });
+</script>
+
+
   <button class="confirm-button" id="confirm-button">
     <img
       src="{{url_for('static', filename='images/confirm.webp')}}"
@@ -26,7 +117,13 @@
 
   <div class="token-modal" id="token-modal">
     <div class="token-modal-content">
-      <img class="token-modal-img" src="{{url_for('static', filename='images/5leaves.webp')}}" alt="5 leaves">
+      <img
+  class="token-modal-img"
+  src="{{ url_for('static', filename='images/5leaves.webp') }}"
+  alt="5 leaves"
+  style="width: 500px; max-width: 400vw; height: auto;"
+/>
+
     </div>
   </div>
 
@@ -45,4 +142,7 @@
     src="{{ url_for('static', filename='/js/app.js') }}"
   ></script>
   <script src="{{url_for('static', filename='js/leaves.js')}}"></script>
+
+
+  
 {% endblock %}

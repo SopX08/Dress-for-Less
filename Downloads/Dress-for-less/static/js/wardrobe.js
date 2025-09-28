@@ -1,4 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // replace '#THE_ELEMENT_ID' with whatever element wardrobe.js appends into (the one used at line 16)
+  const mount = document.querySelector("#THE_ELEMENT_ID");
+  if (!mount) return; // not on the wardrobe page — do nothing
+
+  // ...existing wardrobe.js code that uses `mount.appendChild(...)`...
+});
   const clothes_container = document.getElementById("wardrobe-slot-top");
   const rows = 3;
   const cols = 3;
@@ -16,4 +22,4 @@ document.addEventListener("DOMContentLoaded", () => {
       clothes_container.appendChild(div);
     }
   }
-});
+
