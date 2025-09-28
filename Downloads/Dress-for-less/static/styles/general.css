@@ -1,17 +1,30 @@
 body {
-  font-family: Verdana, Geneva, Tahoma, sans-serif; /* Use a clean sans-serif font */
-  line-height: 1.6; /* Improve readability */
-  background-color: #f5ecdf; /* Light background color */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  line-height: 1.6;
+
+  /* Try relative path from this CSS file (static/styles/) to static/images/ */
+  background-image: url("../images/IMG_1661.PNG"),
+                    /* Fallback absolute path that works with Flask url_for('/static/...') */
+                    url("/static/images/IMG_1661.PNG");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+
   color: #333; /* Dark text for contrast */
   padding: 0;
   margin-top: clamp(0px, 34vw, 320px); /* push everything down cause of header*/
 }
 
+/* Nudge footer a bit to the left */
 footer {
+  position: relative;
+  transform: translateX(-4%);  /* try -1% to -3% to taste */
+  /* optional polish */
+  display: flex;
+  justify-content: center;
   align-items: center;
-  transform: translate(-2%, 0);
 }
-
 /* Make sure the page takes up full height */
 html,
 body {
@@ -59,14 +72,18 @@ a:hover {
 }
 
 .header {
-  background-color: #f0e1cb;
-  display: block;
-  width: 100vw;
-  max-height: 300px;
-  height: auto;
   position: absolute;
   top: 0;
+  left: 0;
+  right: 0;         /* ensure full-bleed across viewport */
+  width: 100%;      /* reliable full width */
+  box-sizing: border-box;
+  padding: 0;  /* adjust vertical padding as needed */
+  max-height: 130px;/* raise max if you want a taller header */
+  height: 100;     /* or set a fixed height like 220px */
+  background-color: rgb(248, 240, 235); /* keep header white if desired */
 }
+
 .logo {
   position: relative;
   display: block;
@@ -108,3 +125,183 @@ a:hover {
   position: absolute;
   z-index: 2;
 }
+/* css */
+/* move the home welcome text up; adjust 'top' as needed */
+#home-welcome {
+  margin-top: 0;
+  position: relative;
+  top: -4rem; /* change this value (e.g. -4rem or -2rem) to move further or less */
+  z-index: 2;
+}
+
+/* css */
+/* move the Home heading up; tweak top value as needed */
+#home-title {
+  position: relative;
+  top: -2.5rem; /* increase magnitude to move further up, decrease to move less */
+  margin-top: 0;
+  z-index: 2;
+}
+
+/* css */
+/* semi-transparent container for add clothes radio group */
+/* css */
+/* semi-transparent container around clothing types */
+.clothing-types {
+  background-color: rgba(255, 255, 255, 0.581); /* white, semi-transparent */
+  padding: 1rem 0rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(4px); /* optional: soft blur behind container */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center heading + options */
+  text-align: center;
+  width: fit-content;   /* shrink-wrap to contents */
+  max-width: 430px;  
+  margin: 0.75rem auto;
+}
+
+/* keep the existing two-column grid inside the container */
+.clothing-options {
+  display: grid;
+  grid-template-columns: 240px 240px; /* fixed two columns */
+  column-gap: 0.5rem;   /* adjust to bring columns closer/farther */
+  row-gap: 0.5rem;
+  justify-content: center;
+  width: fit-content;
+}
+
+/* label styling inside the container */
+.clothing-options label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.25rem 0.35rem;
+  cursor: pointer;
+  white-space: nowrap;
+  width: 100%;
+}
+
+
+/* css */
+h2.text,
+h2.text2 {
+  font-size: clamp(24px, 3vw, 60px); /* same sizing as #home-title (.text2) */
+  position: relative;
+  top: -1.5rem; /* increase magnitude (e.g. -2rem) to move further up */
+  margin-top: 0;
+  z-index: 2;
+}
+
+/* css */
+/* move the name label + input slightly upward and center them */
+.name-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  top: -1.2rem;         /* adjust: larger negative value moves it higher */
+  margin-bottom: 0.75rem;
+}
+
+/* Raise the "Add Clothes" heading and the name field */
+#add-clothes-title {
+  position: relative;
+  top: -2rem;          /* move up; make this a bigger negative to go higher */
+  margin-top: 0;       /* avoid extra spacing above */
+}
+
+.name-field {
+  position: relative;
+  top: -1.6rem;        /* move the label + input up */
+  margin-bottom: 0.5rem;
+}
+
+/* Slightly smaller shift on very small screens */
+@media (max-width: 480px) {
+  #add-clothes-title { top: -1.4rem; }
+  .name-field { top: -1.1rem; }
+}
+/* Raise the subtitle on the Friends page */
+#friends-subtitle {
+  position: relative;
+  top: -3rem;   /* make this a larger negative to move it further up */
+  margin-top: 0;  /* prevent extra space above */
+}
+
+/* Smaller shift on narrow screens */
+@media (max-width: 480px) {
+  #friends-subtitle { top: -1rem; }
+}
+
+/* Raise the subtitle on the Trade page */
+#trade-subtitle {
+  position: relative;
+  top: -3rem;  /* make more negative to move higher */
+  margin-top: 0;
+}
+
+@media (max-width: 480px) {
+  #trade-subtitle { top: -1rem; }
+}
+
+/* Raise the subtitle on the Donation page */
+#donation-subtitle {
+  position: relative;
+  top: -4.5rem;  /* make this more negative to move it higher */
+  margin-top: 0;
+}
+
+@media (max-width: 480px) {
+  #donation-subtitle { top: -1rem; }
+}
+
+h2.text + #donation-subtitle { margin-top: 0rem; }
+
+/* Raise the Donation page title */
+#donation-title {
+  position: relative;
+  top: -3.5rem;   /* make more negative to move higher */
+  margin-top: 0;  /* avoid extra space above */
+}
+
+/* Smaller shift on narrow screens */
+@media (max-width: 480px) {
+  #donation-title { top: -1.2rem; }
+}
+
+/* Optional: tighten space between title and subtitle on this page only */
+#donation-title + #donation-subtitle { margin-top: 0.25rem; }
+
+/* Narrower outfit UI */
+#scene-container {
+  width: min(800px, 95%);
+  margin: 0 auto 0.75rem;
+}
+/* 3-column layout for outfit options */
+#clothing-options {
+  width: min(720px, 95%);      /* a bit wider to fit 3 columns */
+  margin: 0.75rem auto;
+  padding: 0.75rem 0.9rem;
+  background: rgba(255, 255, 255, 0.585);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.06);
+
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));  /* ← 3 columns */
+  gap: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+#clothing-options label {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.4rem;
+  border-radius: 8px;
+}
+

@@ -11,9 +11,7 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/generate_outfit')
-def generate_outfit():
-    return render_template('generate_outfit.html')
+
 
 
 @app.route('/add_clothes')
@@ -50,6 +48,9 @@ def submit_form():
     # Process the data here (e.g., saving the file, storing data, etc.)
     return render_template('add_clothes.html')
 
+@app.route("/generate_outfit", methods=["GET"])  # add POST too if you need it
+def generate_outfit():
+    return render_template("generate_outfit.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

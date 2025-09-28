@@ -48,10 +48,13 @@
   display: none;
   top: 50vh;
   left: 50vw;
-  width: 50vw;
-  height: auto;
-  transform: translate(-50%, -45%);
+  width: 80vw;               /* bigger width */
+  max-width: 900px;          /* cap on very large screens */
+  height: 70vh;              /* give it a visible height */
+  max-height: 400px;         /* cap height */
+  transform: translate(-50%, -50%); /* perfectly center */
   z-index: 12;
+  padding: 1rem;  
 }
 
 .co2_text_popup {
